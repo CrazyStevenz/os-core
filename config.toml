@@ -71,6 +71,7 @@ modules = [
   "codium",
   "gamemode",
   "gamescope",
+  "kitty",
   "lact",
   "librewolf",
   "lsfg-vk",
@@ -80,6 +81,7 @@ modules = [
   "ncdu",
   "podman",
   "proton-launch",
+  "reigntweak",
   "scx",
   "solaar",
   "steam",
@@ -102,8 +104,8 @@ url = "github:icedos/desktop"
 modules = ["gdm"]
 
 [[icedos.repositories]]
-name = "gnome"
 url = "github:icedos/gnome"
+fetchOptionalDependencies = true
 
 [[icedos.repositories]]
 url = "github:icedos/users"
@@ -176,9 +178,6 @@ titlebarLayout = "appmenu:minimize,maximize,close"
 arcmenu = true
 dashToPanel = true
 
-[icedos.desktop.gnome.users.stef]
-startupScript = "steam & signal-desktop"
-
 [icedos.desktop.gnome.users.stef.pinnedApps.arcmenu]
 enable = true
 list = ["codium.desktop", "org.nicotine_plus.Nicotine.desktop", "spek.desktop"]
@@ -191,9 +190,6 @@ list = [
   "signal.desktop",
   "librewolf.desktop",
 ]
-
-[icedos.desktop.gnome.users.work]
-startupScript = "slack"
 
 [icedos.desktop.gnome.users.work.pinnedApps.arcmenu]
 enable = true
@@ -214,6 +210,7 @@ date = true
 weekday = true
 
 [icedos.desktop.users.stef]
+startupScript = "steam & signal-desktop"
 
 [icedos.desktop.users.stef.idle.lock]
 enable = false
@@ -225,6 +222,7 @@ seconds = 300
 enable = false
 
 [icedos.desktop.users.work]
+startupScript = "slack"
 
 [icedos.desktop.users.work.idle.lock]
 seconds = 300

@@ -3,24 +3,24 @@
   icedosLib,
   inputs,
   lib,
-  pkgs,
+  self,
   ...
 }:
 
 let
   inherit (builtins)
     hasAttr
-    readFile
     pathExists
+    readFile
+    replaceStrings
     ;
 
-  inherit (lib) flatten;
+  inherit (lib) flatten hasAttrByPath;
 
   inherit (icedosLib)
     filterByAttrs
     findFirst
     flatMap
-    hasAttrByPath
     stringStartsWith
     ICEDOS_STAGE
     INPUTS_PREFIX
@@ -34,7 +34,9 @@ let
         url,
         subMod ? null,
       }:
-      if subMod == null then "${INPUTS_PREFIX}-${url}" else "${INPUTS_PREFIX}-${url}-${subMod}";
+      replaceStrings [ ":" "/" ] [ "_" "_" ] (
+        if subMod == null then "${INPUTS_PREFIX}-${url}" else "${INPUTS_PREFIX}-${url}-${subMod}"
+      );
 
     fetchModulesRepository =
       {
@@ -54,7 +56,7 @@ let
 
         flakeRev =
           let
-            lock = fromJSON (readFile ./flake.lock);
+            lock = fromJSON (readFile "${self}/flake.lock");
           in
           if (getEnv "ICEDOS_UPDATE" == "1") then
             ""
@@ -67,7 +69,7 @@ let
           else
             "";
 
-        rev = if (pathExists ./flake.lock) then flakeRev else "";
+        rev = if (pathExists "${self}/flake.lock") then flakeRev else "";
 
         flakeUrl = "${url}${rev}";
         flake = if (ICEDOS_STAGE == "genflake") then (getFlake flakeUrl) else inputs.${repoName};
@@ -198,35 +200,6 @@ let
           ;
       };
 
-    serializeAllExternalInputs =
-      inputs:
-      let
-        inherit (builtins)
-          toFile
-          toJSON
-          ;
-
-        inputsJson = toFile "inputs.json" (toJSON inputs);
-
-        inputsNix =
-          with pkgs;
-          derivation {
-            inherit (pkgs.stdenv.hostPlatform) system;
-            __noChroot = true;
-            builder = "${bash}/bin/bash";
-            name = "inputs.nix";
-
-            args = [
-              "-c"
-              ''
-                export PATH=${coreutils}/bin:${gnused}/bin:${nix}/bin:${nixfmt-rfc-style}/bin
-                nix-instantiate --eval -E 'with builtins; fromJSON (readFile ${inputsJson})' | nixfmt | sed '1,1d' | sed '$d' >$out
-              ''
-            ];
-          };
-      in
-      readFile inputsNix;
-
     resolveExternalDependencyRecursively =
       {
         newDeps,
@@ -240,7 +213,7 @@ let
           length
           ;
 
-        inherit (lib) optional unique;
+        inherit (lib) optional optionals unique;
 
         getModuleKey = url: name: "${url}/${name}";
 
@@ -293,7 +266,7 @@ let
             newModules = filter (
               mod:
               (!elem (getModuleKey mod._repoInfo.url mod.meta.name) existingDeps)
-              && (elem mod.meta.name (newDep.modules or []) || mod.meta.name == "default")
+              && (elem mod.meta.name (newDep.modules or [ ]) || mod.meta.name == "default")
             ) (flatMap loadModulesFromRepo newRepo);
 
             # Convert to keys
@@ -303,16 +276,24 @@ let
             # Get deps
             innerDeps = flatMap (
               mod:
-              map (
-                {
-                  url ? newDep.url,
-                  modules ? [],
-                }:
-                {
-                  url = if (url == "self") then newDep.url else url;
-                  modules = filter (mod: !elem (getModuleKey url mod) allKnownKeys) modules;
-                }
-              ) (mod.meta.dependencies or [ ])
+              map
+                (
+                  {
+                    url ? newDep.url,
+                    modules ? [ ],
+                  }:
+                  {
+                    url = if (url == "self") then newDep.url else url;
+                    modules = filter (mod: !elem (getModuleKey url mod) allKnownKeys) modules;
+                  }
+                )
+                (
+                  let
+                    inherit (mod) meta;
+                  in
+                  (meta.dependencies or [ ])
+                  ++ optionals (newDep.fetchOptionalDependencies or false) (meta.optionalDependencies or [ ])
+                )
             ) newModules;
           in
           flatten (

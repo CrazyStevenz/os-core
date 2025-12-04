@@ -9,6 +9,7 @@ action="switch"
 globalBuildArgs=()
 nhBuildArgs=()
 nixBuildArgs=()
+isFirstInstall=""
 
 set -e
 
@@ -24,7 +25,15 @@ while [[ $# -gt 0 ]]; do
       ;;
     --update)
       update="1"
-      refresh="--refresh"
+      update_repos="1"
+      shift
+      ;;
+    --update-nix)
+      update="1"
+      shift
+      ;;
+    --update-repos)
+      update_repos="1"
       shift
       ;;
     --ask)
@@ -34,13 +43,21 @@ while [[ $# -gt 0 ]]; do
     --builder)
       nixBuildArgs+=("--build-host")
       nixBuildArgs+=("$2")
-      shift
-      shift
+      shift 2
       ;;
     --build-args)
       shift
       globalBuildArgs=("$@")
       break
+      ;;
+    --first-install)
+      isFirstInstall=1
+      shift
+      ;;
+    --logs)
+      export ICEDOS_LOGGING=1
+      trace="--show-trace"
+      shift
       ;;
     -*|--*)
       echo "Unknown arg: $1" >&2
@@ -48,6 +65,17 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+export NIX_CONFIG="experimental-features = flakes nix-command"
+
+nixBin=$(nix eval --impure --raw --expr "
+    let pkgs = import <nixpkgs> {};
+    in with builtins;
+    if (compareVersions \"2.31.0\" pkgs.nix.version) > 0
+    then toString (getFlake \"github:NixOS/nixpkgs/nixpkgs-unstable\").legacyPackages.\${pkgs.stdenv.hostPlatform.system}.nix
+    else toString pkgs.nix
+")
+export PATH="$nixBin/bin:$PATH"
 
 mkdir -p "$ICEDOS_DIR"
 
@@ -57,9 +85,20 @@ printf "$PWD" > "$CONFIG"
 
 # Generate flake.nix
 [ -f "$FLAKE" ] && rm -f "$FLAKE"
-ICEDOS_UPDATE="$update" ICEDOS_STAGE="genflake" nix eval $refresh --option build-use-sandbox false --show-trace --extra-experimental-features nix-command --write-to "$FLAKE" --file "./lib/genflake.nix" "$FLAKE"
+
+export ICEDOS_FLAKE_INPUTS=$(mktemp)
+
+[ "$update_repos" == "1" ] && refresh="--refresh"
+
+ICEDOS_UPDATE="$update_repos" ICEDOS_STAGE="genflake" nix eval $refresh $trace --file "./lib/genflake.nix" flakeInputs | nixfmt | sed "1,1d" | sed "\$d" >$ICEDOS_FLAKE_INPUTS
+(printf "{ inputs = {" ; cat $ICEDOS_FLAKE_INPUTS ; printf "}; outputs = { ... }: {}; }") >$FLAKE
+nix flake prefetch-inputs
+
+ICEDOS_STAGE="genflake" nix eval $trace --file "./lib/genflake.nix" --raw flakeFinal >$FLAKE
 nixfmt "$FLAKE"
-nix run .#init
+
+rm $ICEDOS_FLAKE_INPUTS
+unset ICEDOS_FLAKE_INPUTS
 
 [ "$update" == "1" ] && nix flake update
 
@@ -83,9 +122,9 @@ rsync -a ./ "$TMP_BUILD_FOLDER" \
 echo "Building from path $TMP_BUILD_FOLDER"
 
 # Build the system configuration
-if (( ${#nixBuildArgs[@]} != 0 )); then
-  sudo nixos-rebuild $action --flake .#"$(cat /etc/hostname)" ${nixBuildArgs[*]} ${globalBuildArgs[*]}
+if (( ${#nixBuildArgs[@]} != 0 )) || [[ "$isFirstInstall" == 1 ]]; then
+  sudo nixos-rebuild $action --flake .#"$(cat /etc/hostname)" $trace ${nixBuildArgs[*]} ${globalBuildArgs[*]}
   exit 0
 fi
 
-nh os $action "$TMP_BUILD_FOLDER" ${nhBuildArgs[*]} -- ${globalBuildArgs[*]}
+nh os $action "$TMP_BUILD_FOLDER" ${nhBuildArgs[*]} -- $trace ${globalBuildArgs[*]}

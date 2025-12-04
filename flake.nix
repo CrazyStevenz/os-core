@@ -6,10 +6,10 @@
     home-manager = {
       follows = "chaotic/home-manager";
     };
-    "icedos-github:icedos/apps" = {
-      url = "github:icedos/apps/768b1fa7ece80cad011b33d74c692bd2c76540dc";
+    icedos-github_icedos_apps = {
+      url = "github:icedos/apps/7270a9e78b95668b5dac40d388a375b16a285faa";
     };
-    "icedos-github:icedos/apps-aagl-aagl" = {
+    icedos-github_icedos_apps-aagl-aagl = {
       inputs = {
         nixpkgs = {
           follows = "nixpkgs";
@@ -17,32 +17,31 @@
       };
       url = "github:ezKEa/aagl-gtk-on-nix";
     };
-    "icedos-github:icedos/apps-celluloid-celluloid-shader" = {
+    icedos-github_icedos_apps-celluloid-celluloid-shader = {
       flake = false;
       url = "path:///nix/store/5zcj323fgw0vxx0nhgvp45yxrwikm0c6-FSR.glsl";
     };
-    "icedos-github:icedos/desktop" = {
-      url = "github:icedos/desktop/2eda900d2b2732d686825842a5cf64a0211e9217";
+    icedos-github_icedos_desktop = {
+      url = "github:icedos/desktop/bd29adfa8c547da90cdb286237b69ebe5deb3d8c";
     };
-    "icedos-github:icedos/gnome" = {
-      url = "github:icedos/gnome/39f13b18573bec1ecdca5b27b172b64d87b5abc0";
+    icedos-github_icedos_gnome = {
+      url = "github:icedos/gnome/884a9f13516c18db04ce26898a7a17434b792e01";
     };
-    "icedos-github:icedos/hardware" = {
+    icedos-github_icedos_hardware = {
       url = "github:icedos/hardware/3ed0f39dcefe9afb734e9d8ed9d9d8bd97f5de5d";
     };
-    "icedos-github:icedos/providers" = {
+    icedos-github_icedos_providers = {
       url = "github:icedos/providers/c8c06c007923371a6baedcabe55cb1b209f0f04b";
     };
-    "icedos-github:icedos/tweaks" = {
+    icedos-github_icedos_tweaks = {
       url = "github:icedos/tweaks/83d42744d78c418a259b8e1c4ae7eba1d3e9eaf5";
     };
-    "icedos-github:icedos/users" = {
+    icedos-github_icedos_users = {
       url = "github:icedos/users/9ddc3663045cd05e7df3d99844b4b640741fe667";
     };
     nixpkgs = {
       follows = "chaotic/nixpkgs";
     };
-
   };
 
   outputs =
@@ -56,7 +55,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       inherit (pkgs) lib;
-      inherit (lib) fileContents flatten map;
+      inherit (lib) fileContents map;
 
       inherit (builtins) fromTOML;
       inherit ((fromTOML (fileContents ./config.toml))) icedos;
@@ -70,11 +69,6 @@
       inherit (icedosLib) modulesFromConfig;
     in
     {
-      apps.${system}.init = {
-        type = "app";
-        program = toString (with pkgs; writeShellScript "icedos-flake-init" "exit");
-      };
-
       nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           inherit icedosLib inputs;

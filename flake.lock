@@ -125,6 +125,21 @@
         "type": "path"
       }
     },
+    "icedos-github_icedos_apps-flatpak-nix-flatpak": {
+      "locked": {
+        "lastModified": 1754777568,
+        "narHash": "sha256-0bBqT+3XncgF8F03RFAamw9vdf0VmaDoIJLTGkjfQZs=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "62f636b87ef6050760a8cb325cadb90674d1e23e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
     "icedos-github_icedos_desktop": {
       "locked": {
         "lastModified": 1764432739,
@@ -308,6 +323,7 @@
         "icedos-github_icedos_apps": "icedos-github_icedos_apps",
         "icedos-github_icedos_apps-aagl-aagl": "icedos-github_icedos_apps-aagl-aagl",
         "icedos-github_icedos_apps-celluloid-celluloid-shader": "icedos-github_icedos_apps-celluloid-celluloid-shader",
+        "icedos-github_icedos_apps-flatpak-nix-flatpak": "icedos-github_icedos_apps-flatpak-nix-flatpak",
         "icedos-github_icedos_desktop": "icedos-github_icedos_desktop",
         "icedos-github_icedos_gnome": "icedos-github_icedos_gnome",
         "icedos-github_icedos_hardware": "icedos-github_icedos_hardware",

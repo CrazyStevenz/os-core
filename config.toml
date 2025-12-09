@@ -69,6 +69,7 @@ modules = [
   "btop",
   "celluloid",
   "codium",
+  "flatpak",
   "gamemode",
   "gamescope",
   "kitty",
@@ -110,10 +111,6 @@ fetchOptionalDependencies = true
 [[icedos.repositories]]
 url = "github:icedos/users"
 
-[[icedos.repositories]]
-url = "github:icedos/providers"
-modules = ["chaotic"]
-
 [icedos.applications]
 defaultBrowser = "librewolf.desktop"
 defaultEditor = "codium.desktop"
@@ -133,6 +130,9 @@ extraPackages = [
   "warp", # File sync
 ]
 insecurePackages = []
+
+[icedos.applications.flatpak]
+packages = ["flathub-beta:com.stremio.Stremio"]
 
 [icedos.applications.codium.users.stef]
 autoSave = "onFocusChange"
@@ -339,7 +339,7 @@ extraPackages = [
 [icedos.users.work]
 description = "Work"
 extraPackages = [
-  # "code-cursor", # AI-powered code editor built on vscode
+  "code-cursor", # AI-powered code editor built on vscode
   "slack", # Desktop client for Slack
   "watchman", # Watches files and takes action when they change
   "windsurf", # Agentic IDE powered by AI Flow paradigm

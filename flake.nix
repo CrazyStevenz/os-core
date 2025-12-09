@@ -21,6 +21,9 @@
       flake = false;
       url = "path:///nix/store/5zcj323fgw0vxx0nhgvp45yxrwikm0c6-FSR.glsl";
     };
+    icedos-github_icedos_apps-flatpak-nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/";
+    };
     icedos-github_icedos_desktop = {
       url = "github:icedos/desktop/bd29adfa8c547da90cdb286237b69ebe5deb3d8c";
     };

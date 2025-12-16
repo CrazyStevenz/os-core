@@ -87,7 +87,7 @@ modules = [
   "solaar",
   "steam",
   "steam-session",
-  "walker",
+  # "walker",
   "wg-quick",
   "zenergy",
   "zenstates",

@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
     };
     icedos-github_icedos_apps = {
-      url = "github:icedos/apps/e0d168d63c1e3f03ee87cc9af7d9c2ff3cfb62aa";
+      url = "github:icedos/apps/ce99557eb0dbb55d60b694f7cffd06fcf3244200";
     };
     icedos-github_icedos_apps-aagl-aagl = {
       inputs = {
@@ -24,27 +24,19 @@
       url = "path:///nix/store/5zcj323fgw0vxx0nhgvp45yxrwikm0c6-FSR.glsl";
     };
     icedos-github_icedos_apps-flatpak-nix-flatpak = {
-      inputs = {
-        home-manager = {
-          follows = "home-manager";
-        };
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
       url = "github:gmodena/nix-flatpak";
     };
     icedos-github_icedos_desktop = {
-      url = "github:icedos/desktop/b81757fba06a34ff89235d39cfdad643c02d64a3";
+      url = "github:icedos/desktop/e8f94df2743640bc82e8638aa24194700298eec8";
     };
     icedos-github_icedos_gnome = {
       url = "github:icedos/gnome/884a9f13516c18db04ce26898a7a17434b792e01";
     };
     icedos-github_icedos_hardware = {
-      url = "github:icedos/hardware/7e36b2c37b6b429914145804f7e9bbc95d8e057d";
+      url = "github:icedos/hardware/da1d8cec633121ad5e4c355c0098ec627dbfca76";
     };
     icedos-github_icedos_tweaks = {
-      url = "github:icedos/tweaks/83d42744d78c418a259b8e1c4ae7eba1d3e9eaf5";
+      url = "github:icedos/tweaks/3082dd0bdbd5a8f8aef894c321d580e13daf61fe";
     };
     icedos-github_icedos_users = {
       url = "github:icedos/users/9ddc3663045cd05e7df3d99844b4b640741fe667";
@@ -79,7 +71,7 @@
       inherit (icedosLib) modulesFromConfig;
     in
     {
-      nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem rec {
+      nixosConfigurations."icedos" = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           inherit icedosLib inputs;
         };

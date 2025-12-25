@@ -72,6 +72,7 @@ modules = [
   "flatpak",
   "gamemode",
   "gamescope",
+  "helium",
   "kitty",
   "lact",
   "librewolf",

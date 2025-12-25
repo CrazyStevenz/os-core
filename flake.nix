@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
     };
     icedos-github_icedos_apps = {
-      url = "github:icedos/apps/ce99557eb0dbb55d60b694f7cffd06fcf3244200";
+      url = "github:icedos/apps/b96ffb972ca494bec0a0fa897a6bf5dc75440de8";
     };
     icedos-github_icedos_apps-aagl-aagl = {
       inputs = {
@@ -35,6 +35,9 @@
     icedos-github_icedos_hardware = {
       url = "github:icedos/hardware/da1d8cec633121ad5e4c355c0098ec627dbfca76";
     };
+    icedos-github_icedos_providers = {
+      url = "github:icedos/providers/c1a5aa2f9cdfd58f0c58ea78a4905c6afa9c373e";
+    };
     icedos-github_icedos_tweaks = {
       url = "github:icedos/tweaks/3082dd0bdbd5a8f8aef894c321d580e13daf61fe";
     };
@@ -43,6 +46,14 @@
     };
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nur = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+      url = "github:nix-community/nur";
     };
   };
 

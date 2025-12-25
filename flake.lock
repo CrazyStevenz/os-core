@@ -16,6 +16,27 @@
         "type": "github"
       }
     },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nur",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733312601,
+        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -23,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765860045,
-        "narHash": "sha256-7Lxp/PfOy4h3QIDtmWG/EgycaswqRSkDX4DGtet14NE=",
+        "lastModified": 1766553851,
+        "narHash": "sha256-hHKQhHkXxuPJwLkI8wdu826GLV5AcuW9/HVdc9eBnTU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "09de9577d47d8bffb11c449b6a3d24e32ac16c99",
+        "rev": "7eca7f7081036a7b740090994c9ec543927f89a7",
         "type": "github"
       },
       "original": {
@@ -38,17 +59,17 @@
     },
     "icedos-github_icedos_apps": {
       "locked": {
-        "lastModified": 1765796177,
-        "narHash": "sha256-OHKFzBdcRe9rUDRC6OCo1hbWvRRYmZn6/m2sFnDjKFo=",
+        "lastModified": 1766565729,
+        "narHash": "sha256-bY5sWlqmm5YIiUeAxMy96qrQ0U3/LhaWOiaA+Z6C4+k=",
         "owner": "icedos",
         "repo": "apps",
-        "rev": "ce99557eb0dbb55d60b694f7cffd06fcf3244200",
+        "rev": "b96ffb972ca494bec0a0fa897a6bf5dc75440de8",
         "type": "github"
       },
       "original": {
         "owner": "icedos",
         "repo": "apps",
-        "rev": "ce99557eb0dbb55d60b694f7cffd06fcf3244200",
+        "rev": "b96ffb972ca494bec0a0fa897a6bf5dc75440de8",
         "type": "github"
       }
     },
@@ -61,11 +82,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1765900816,
-        "narHash": "sha256-Pa7QpF+84hTuPanVaJ/B3NgdaytUMj3PN06sEaNibaM=",
+        "lastModified": 1766424259,
+        "narHash": "sha256-ikKwd1/8rLIz8I+B8kwLaNwW5Hh75bkgGRalC+gEpw0=",
         "owner": "ezKEa",
         "repo": "aagl-gtk-on-nix",
-        "rev": "36b14e5e7014e471341f0807dc9a9e2d65a157f4",
+        "rev": "37c289121c7ed44f723c326b6c079cd8aaeb35cf",
         "type": "github"
       },
       "original": {
@@ -150,6 +171,22 @@
         "type": "github"
       }
     },
+    "icedos-github_icedos_providers": {
+      "locked": {
+        "lastModified": 1766481728,
+        "narHash": "sha256-r1XdQMkluHS5Mo67ytQFAcp/iilokcGYzRb2dfxKtr8=",
+        "owner": "icedos",
+        "repo": "providers",
+        "rev": "c1a5aa2f9cdfd58f0c58ea78a4905c6afa9c373e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "icedos",
+        "repo": "providers",
+        "rev": "c1a5aa2f9cdfd58f0c58ea78a4905c6afa9c373e",
+        "type": "github"
+      }
+    },
     "icedos-github_icedos_tweaks": {
       "locked": {
         "lastModified": 1765738481,
@@ -200,17 +237,38 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1765779637,
-        "narHash": "sha256-KJ2wa/BLSrTqDjbfyNx70ov/HdgNBCBBSQP3BIzKnv4=",
+        "lastModified": 1766309749,
+        "narHash": "sha256-3xY8CZ4rSnQ0NqGhMKAy5vgC+2IVK0NoVEzDoOh4DA4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1306659b587dc277866c7b69eb97e5f07864d8c4",
+        "rev": "a6531044f6d0bef691ea18d4d4ce44d0daa6e816",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nur": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766604675,
+        "narHash": "sha256-rwMDGaPPuatTJ3turIiHZzH/RMDACHs3DSBKtivi/Ts=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "89b8880d1fedaeba96f1ec2c7cd3b885aa356fe3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
         "type": "github"
       }
     },
@@ -224,9 +282,11 @@
         "icedos-github_icedos_desktop": "icedos-github_icedos_desktop",
         "icedos-github_icedos_gnome": "icedos-github_icedos_gnome",
         "icedos-github_icedos_hardware": "icedos-github_icedos_hardware",
+        "icedos-github_icedos_providers": "icedos-github_icedos_providers",
         "icedos-github_icedos_tweaks": "icedos-github_icedos_tweaks",
         "icedos-github_icedos_users": "icedos-github_icedos_users",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "nur": "nur"
       }
     },
     "rust-overlay": {

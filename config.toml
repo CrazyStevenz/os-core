@@ -214,7 +214,7 @@ generations = 5 # Number of generations that will always be kept
 extraArgs = ["--performance"]
 
 [icedos.applications.steam]
-beta = true
+beta = false
 cpuUsageWorkaround = true
 downloadsWorkaround = true
 

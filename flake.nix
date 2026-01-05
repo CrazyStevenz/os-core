@@ -9,22 +9,11 @@
       url = "github:nix-community/home-manager";
     };
     icedos-github_icedos_apps = {
-      url = "github:icedos/apps/98c89d098a98d3ada2645712a2bd87aa395f51d3";
-    };
-    icedos-github_icedos_apps-aagl-aagl = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-      url = "github:ezKEa/aagl-gtk-on-nix";
+      url = "github:icedos/apps/86676e686edeb5037a787ca9c7a8d9c1be5e9008";
     };
     icedos-github_icedos_apps-celluloid-celluloid-shader = {
       flake = false;
       url = "path:///nix/store/5zcj323fgw0vxx0nhgvp45yxrwikm0c6-FSR.glsl";
-    };
-    icedos-github_icedos_apps-flatpak-nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
     };
     icedos-github_icedos_desktop = {
       url = "github:icedos/desktop/e8f94df2743640bc82e8638aa24194700298eec8";
@@ -33,7 +22,7 @@
       url = "github:icedos/gnome/884a9f13516c18db04ce26898a7a17434b792e01";
     };
     icedos-github_icedos_hardware = {
-      url = "github:icedos/hardware/35101db5b342270c48d0f31305b1ae5bca173cdb";
+      url = "github:icedos/hardware/7c188c09400fb9079213a9f7015a5290742e2585";
     };
     icedos-github_icedos_providers = {
       url = "github:icedos/providers/c1a5aa2f9cdfd58f0c58ea78a4905c6afa9c373e";
@@ -82,7 +71,7 @@
       inherit (icedosLib) modulesFromConfig;
     in
     {
-      nixosConfigurations."icedos" = nixpkgs.lib.nixosSystem rec {
+      nixosConfigurations."laptop" = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           inherit icedosLib inputs;
         };
@@ -97,7 +86,7 @@
             {
               options.icedos.configurationLocation = mkOption {
                 type = types.str;
-                default = "/home/stef/code/os/os-core";
+                default = "/home/work/code/os-core";
               };
             }
           )
@@ -125,7 +114,7 @@
             in
             {
               imports = [ ./modules/options.nix ] ++ getModules ./.extra ++ getModules ./.private;
-              config.system.stateVersion = "23.05";
+              config.system.stateVersion = "22.05";
             }
           )
 
@@ -154,7 +143,6 @@
                 "nvme"
                 "xhci_pci"
                 "ahci"
-                "usbhid"
                 "usb_storage"
                 "sd_mod"
               ];
@@ -163,32 +151,39 @@
               boot.extraModulePackages = [ ];
 
               fileSystems."/" = {
-                device = "/dev/disk/by-uuid/875ba1fd-ae85-47ec-beac-ec515e776834";
+                device = "/dev/disk/by-uuid/a96c8707-e60d-4a63-84e4-a09775df2bec";
                 fsType = "btrfs";
                 options = [ "subvol=@" ];
               };
 
-              boot.initrd.luks.devices."luks-a42d4af1-e764-4d91-acb2-ac735d979a64".device =
-                "/dev/disk/by-uuid/a42d4af1-e764-4d91-acb2-ac735d979a64";
+              boot.initrd.luks.devices."luks-1a3c2842-eb46-4f8f-9960-716acabc4b31".device =
+                "/dev/disk/by-uuid/1a3c2842-eb46-4f8f-9960-716acabc4b31";
+              boot.initrd.luks.devices."luks-a8cffca7-e268-4cb1-a7b8-2e14a3b56208".device =
+                "/dev/disk/by-uuid/a8cffca7-e268-4cb1-a7b8-2e14a3b56208";
 
-              fileSystems."/boot" = {
-                device = "/dev/disk/by-uuid/080E-B189";
+              fileSystems."/boot/efi" = {
+                device = "/dev/disk/by-uuid/7330-238A";
                 fsType = "vfat";
               };
 
-              swapDevices = [ ];
+              swapDevices = [
+                { device = "/dev/disk/by-uuid/edb966ac-b852-4051-bc93-668b968849a7"; }
+              ];
 
               # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
               # (the default) this is the recommended approach. When using systemd-networkd it's
               # still possible to use this option, but it's recommended to use it in conjunction
               # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
               networking.useDHCP = lib.mkDefault true;
-              # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
+              # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+              # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
               nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
               hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
             }
           )
+
+          ({ })
 
         ]
         ++ modulesFromConfig.options

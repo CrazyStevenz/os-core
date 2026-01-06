@@ -168,7 +168,7 @@ date = true
 weekday = true
 
 [icedos.desktop.users.work]
-startupScript = "proton-vpn & slack"
+startupScript = "protonvpn-app & slack"
 
 [icedos.desktop.users.work.idle.lock]
 seconds = 300

@@ -9,7 +9,7 @@
 
 # [icedos.desktop.cosmic.panel]
 # autohide = true
-# favorites = ["steam", "discord", "signal", "librewolf"]
+# favorites = ["steam", "discord", "signal", "helium"]
 # position = "Bottom" # Left, Right, Top, Bottom
 # size = "S" # XS, S, M, L, XL
 
@@ -113,7 +113,7 @@ fetchOptionalDependencies = true
 url = "github:icedos/users"
 
 [icedos.applications]
-defaultBrowser = "librewolf.desktop"
+defaultBrowser = "helium.desktop"
 defaultEditor = "codium.desktop"
 extraPackages = [
   "discord",
@@ -237,12 +237,7 @@ list = ["codium.desktop", "org.nicotine_plus.Nicotine.desktop", "spek.desktop"]
 
 [icedos.desktop.gnome.users.stef.pinnedApps.shell]
 enable = true
-list = [
-  "steam.desktop",
-  "discord.desktop",
-  "signal.desktop",
-  "librewolf.desktop",
-]
+list = ["steam.desktop", "discord.desktop", "signal.desktop", "helium.desktop"]
 
 [icedos.desktop.gnome.users.work.pinnedApps.arcmenu]
 enable = true
@@ -254,7 +249,7 @@ list = [
   "slack.desktop",
   "discord.desktop",
   "signal.desktop",
-  "librewolf.desktop",
+  "helium.desktop",
   "webstorm.desktop",
 ]
 

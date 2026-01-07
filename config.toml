@@ -123,7 +123,7 @@ extraPackages = [
   "jetbrains.webstorm", # Professional IDE for Web and JavaScript development
   "mission-center", # CPU, Memory, Disk, Network and GPU usage monitor
   "mousai", # Song recognizer
-  "nodejs_20", # Node package manager
+  "nodejs_22", # Node package manager
   "pnpm", # Fast, disk space efficient package manager for JavaScript
   "protonvpn-gui",
   "signal-desktop",

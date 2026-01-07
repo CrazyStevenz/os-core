@@ -369,14 +369,14 @@ extraPackages = [
 
   # "audacity", # Sound editor with graphical UI
   "bottles", # Wine manager
-  # "curtail", # Image compressor
+  "curtail", # Image compressor
   "eartag", # Simple music tag editor
   # "faugus-launcher",
   "flac", # Library and tools for encoding and decoding the FLAC lossless audio file format
   "fragments", # BitTorrent client
   # "ghex", # HEX Editor
   "newsflash", # RSS reader
-  # "nextcloud-client", # Nextcloud themed desktop client
+  "nextcloud-client", # Nextcloud themed desktop client
   "nicotine-plus", # p2p music sharing platform
   # "owmods-gui", # Outer Wilds Mod Manager
   "parabolic", # Download web video and audio
@@ -389,6 +389,7 @@ extraPackages = [
 description = "Work"
 extraPackages = [
   # "code-cursor", # AI-powered code editor built on vscode
+  "envsubst", # Environment variables substitution for Go
   # "google-cloud-sdk", # Required to use 'gcloud' command
   "slack", # Desktop client for Slack
   "watchman", # Required to watch when TypeScript files are created/updated/deleted

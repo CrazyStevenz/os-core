@@ -116,6 +116,7 @@ url = "github:icedos/users"
 defaultBrowser = "helium.desktop"
 defaultEditor = "codium.desktop"
 extraPackages = [
+  "appimage-run", # Appimage runner
   "discord",
   "gimp3", # GNU Image Manipulation Program
   "gsound", # Small library for playing system sounds (required to show file properties in Nautilus)
@@ -366,7 +367,6 @@ extraPackages = [
   # "prismlauncher", # Minecraft launcher
   # "rpcs3", # PS3
 
-  "appimage-run", # Appimage runner
   # "audacity", # Sound editor with graphical UI
   "bottles", # Wine manager
   # "curtail", # Image compressor

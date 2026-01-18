@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
     };
     icedos-github_icedos_apps = {
-      url = "github:icedos/apps/c994681a2fce2254861cb71fe257b630f5dfe415";
+      url = "github:icedos/apps/d060893219d1d3dbf08fdf3c38fc6c0be18a1cb9";
     };
     icedos-github_icedos_apps-aagl-aagl = {
       inputs = {
@@ -39,7 +39,7 @@
       url = "github:icedos/providers/c1a5aa2f9cdfd58f0c58ea78a4905c6afa9c373e";
     };
     icedos-github_icedos_tweaks = {
-      url = "github:icedos/tweaks/3082dd0bdbd5a8f8aef894c321d580e13daf61fe";
+      url = "github:icedos/tweaks/96a1f354a9716901daa81cd7bf65d24985d4153d";
     };
     icedos-github_icedos_users = {
       url = "github:icedos/users/9ddc3663045cd05e7df3d99844b4b640741fe667";

@@ -303,8 +303,8 @@ modules = [
 [icedos.hardware.bootloaders.systemd-boot]
 mountPoint = "/boot"
 
-# [icedos.hardware.graphics.radeon]
-# featureMask = "0xffffffff"
+[icedos.hardware.graphics.radeon]
+featureMask = "0xffffffff"
 
 [icedos.hardware.kernel]
 version = "latest"

@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768062556,
-        "narHash": "sha256-jgC3INik4sJCx31bR+DJMNCoRtSf/9rKL1ZSBVRL0AU=",
+        "lastModified": 1768749864,
+        "narHash": "sha256-EKRMFBLBRCHrFZ5luX85RTnsN3b2q3FjZEi62vXwJBE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "312c4fe0bbf054e3c87ebad51792f2e6d2ce4f01",
+        "rev": "5148e08046dc8c74c66b8aee4d302a47d6931b56",
         "type": "github"
       },
       "original": {
@@ -59,17 +59,17 @@
     },
     "icedos-github_icedos_apps": {
       "locked": {
-        "lastModified": 1768061101,
-        "narHash": "sha256-2LnDma6QDdy+xpub7y8wiEIlveAXRAFGpWiDRY0Wtpo=",
+        "lastModified": 1768675971,
+        "narHash": "sha256-hGUgJN7eGL84ocfdMnj/GjgrBL+ITj1V2kW4Airkwkk=",
         "owner": "icedos",
         "repo": "apps",
-        "rev": "d060893219d1d3dbf08fdf3c38fc6c0be18a1cb9",
+        "rev": "a5014898ccbdaca71611975b2d858ae6dbd5b5f7",
         "type": "github"
       },
       "original": {
         "owner": "icedos",
         "repo": "apps",
-        "rev": "d060893219d1d3dbf08fdf3c38fc6c0be18a1cb9",
+        "rev": "a5014898ccbdaca71611975b2d858ae6dbd5b5f7",
         "type": "github"
       }
     },
@@ -110,11 +110,11 @@
     },
     "icedos-github_icedos_apps-flatpak-nix-flatpak": {
       "locked": {
-        "lastModified": 1767983141,
-        "narHash": "sha256-7ZCulYUD9RmJIDULTRkGLSW1faMpDlPKcbWJLYHoXcs=",
+        "lastModified": 1768656715,
+        "narHash": "sha256-Sbh037scxKFm7xL0ahgSCw+X2/5ZKeOwI2clqrYr9j4=",
         "owner": "gmodena",
         "repo": "nix-flatpak",
-        "rev": "440818969ac2cbd77bfe025e884d0aa528991374",
+        "rev": "123fe29340a5b8671367055b75a6e7c320d6f89a",
         "type": "github"
       },
       "original": {
@@ -125,17 +125,17 @@
     },
     "icedos-github_icedos_desktop": {
       "locked": {
-        "lastModified": 1765978359,
-        "narHash": "sha256-xvmbD536I6taTRxkbY+RUNAuMc1ldIg1IVlIusJ2mG0=",
+        "lastModified": 1768398660,
+        "narHash": "sha256-rDxiL421oDXSqiBjQpfOF1iVUi8xBFBRH42y5j6RhpY=",
         "owner": "icedos",
         "repo": "desktop",
-        "rev": "e8f94df2743640bc82e8638aa24194700298eec8",
+        "rev": "b04d1c10c6687303f06c2ead493ffa547142e4f1",
         "type": "github"
       },
       "original": {
         "owner": "icedos",
         "repo": "desktop",
-        "rev": "e8f94df2743640bc82e8638aa24194700298eec8",
+        "rev": "b04d1c10c6687303f06c2ead493ffa547142e4f1",
         "type": "github"
       }
     },
@@ -157,17 +157,17 @@
     },
     "icedos-github_icedos_hardware": {
       "locked": {
-        "lastModified": 1766784417,
-        "narHash": "sha256-V4aO0i8KwmIAUfLkqvEoDlg6URJD7op91STLfzOXGrk=",
+        "lastModified": 1768682016,
+        "narHash": "sha256-ZMqwvzl1yK7LbiDRg3zXYhS1v5aAoEeooICYUHygLVw=",
         "owner": "icedos",
         "repo": "hardware",
-        "rev": "7c188c09400fb9079213a9f7015a5290742e2585",
+        "rev": "f7bc08852e7665da251af79395d3523cfc5e978b",
         "type": "github"
       },
       "original": {
         "owner": "icedos",
         "repo": "hardware",
-        "rev": "7c188c09400fb9079213a9f7015a5290742e2585",
+        "rev": "f7bc08852e7665da251af79395d3523cfc5e978b",
         "type": "github"
       }
     },
@@ -237,11 +237,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1767892417,
-        "narHash": "sha256-dhhvQY67aboBk8b0/u0XB6vwHdgbROZT3fJAjyNh5Ww=",
+        "lastModified": 1768564909,
+        "narHash": "sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
+        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
         "type": "github"
       },
       "original": {
@@ -259,11 +259,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768059548,
-        "narHash": "sha256-NSMGzFQtoZxdxrQiShWjfJ5k2gzW+atxcr8MiywI1eI=",
+        "lastModified": 1768751069,
+        "narHash": "sha256-C5j7Ng5vGOM8ewuSNRY/2vZBgcLQVenNGRvCBoqu6XY=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "a4f7c05a5f80044f9dcf3dfeb55a16b5a2713caf",
+        "rev": "c8efaed3ee29b9d12ca2bf3be4d566a50f93ab9d",
         "type": "github"
       },
       "original": {

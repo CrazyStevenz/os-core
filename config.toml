@@ -60,6 +60,9 @@
 # weekday = true
 
 [[icedos.repositories]]
+url = "path:/home/stef/code/os/os-core/.repos/hytale-launcher"
+
+[[icedos.repositories]]
 url = "github:icedos/apps"
 # url = "path:/home/stef/code/os/apps"
 modules = [
@@ -87,6 +90,7 @@ modules = [
   "solaar",
   "steam",
   "steam-session",
+  "tailscale",
   # "walker",
   "wg-quick",
   "zenergy",

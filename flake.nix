@@ -15,6 +15,20 @@
       flake = false;
       url = "path:///nix/store/5zcj323fgw0vxx0nhgvp45yxrwikm0c6-FSR.glsl";
     };
+    icedos-github_icedos_cosmic = {
+      url = "github:icedos/cosmic/32c0e5058a129a209c765c6e31ab8293ba764dc6";
+    };
+    icedos-github_icedos_cosmic-default-cosmic-manager = {
+      inputs = {
+        home-manager = {
+          follows = "home-manager";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+      url = "github:HeitorAugustoLN/cosmic-manager";
+    };
     icedos-github_icedos_desktop = {
       url = "github:icedos/desktop/e8f94df2743640bc82e8638aa24194700298eec8";
     };
@@ -71,7 +85,7 @@
       inherit (icedosLib) modulesFromConfig;
     in
     {
-      nixosConfigurations."laptop" = nixpkgs.lib.nixosSystem rec {
+      nixosConfigurations."icedos" = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           inherit icedosLib inputs;
         };
